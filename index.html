@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latha Rajendran – Global Engineering Leader</title>
+<meta name="description" content="Latha Rajendran, global engineering leader bringing AI to enterprise applications. Selected work, patent and contact details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #eef0ff;
+    --ink: #151a66;
+    --muted: #4a50a8;
+    --rule: rgba(21, 26, 102, 0.22);
+    --blue: #2d3af0;
+    --on-blue: #ffffff;
+    --sun: #ffc233;
+    --on-sun: #151a66;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #0e1140;
+      --ink: #e8eaff;
+      --muted: #a9aee8;
+      --rule: rgba(232, 234, 255, 0.24);
+    }
+  }
+  :root[data-theme="dark"] {
+    --page: #0e1140;
+    --ink: #e8eaff;
+    --muted: #a9aee8;
+    --rule: rgba(232, 234, 255, 0.24);
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+  @media (min-width: 48rem) { .wrap { padding: 0 2.5rem; } }
+
+  /* ---------- Top bar ---------- */
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.1rem; }
+  .topbar .mark { font-family: var(--display); font-weight: 700; font-size: 1.15rem; text-decoration: none; letter-spacing: -0.01em; }
+  .topbar nav { display: flex; gap: 1.5rem; }
+  .topbar nav a { text-decoration: none; font-weight: 500; padding-block: 0.25rem; border-bottom: 2px solid transparent; }
+  .topbar nav a:hover { border-bottom-color: var(--sun); }
+
+  /* ---------- Hero ---------- */
+  .hero { background: var(--blue); color: var(--on-blue); position: relative; overflow: hidden; }
+  .hero .wrap { padding-top: clamp(3rem, 9vw, 7rem); padding-bottom: clamp(3rem, 7vw, 5.5rem); position: relative; }
+  .hero-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3.25rem, 14vw, 10.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+    margin: 0;
+  }
+  .hero-name .line { display: block; overflow: hidden; padding-bottom: 0.06em; }
+  .hero-name .line span { display: block; animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .hero-name .line:nth-child(2) span { animation-delay: 0.12s; }
+  @keyframes rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin: 2rem 0 0;
+  }
+  .hero-title + .hero-role { margin-top: 0.6rem; }
+  .hero-role {
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+    font-weight: 500;
+    line-height: 1.25;
+    max-width: 30ch;
+    margin: 2rem 0 0;
+  }
+  .sticker {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    width: 8.5rem; height: 8.5rem;
+    border-radius: 50%;
+    background: var(--sun);
+    color: var(--on-sun);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.15;
+    padding: 1rem;
+    text-decoration: none;
+    transform: rotate(-9deg);
+    margin-top: 2rem;
+  }
+  .sticker:hover { transform: rotate(-3deg); }
+  .sticker { transition: transform 0.25s ease; }
+  @media (min-width: 48rem) {
+    .sticker { position: absolute; right: 2.5rem; bottom: 3.5rem; margin-top: 0; width: 10rem; height: 10rem; font-size: 1.2rem; }
+  }
+
+  /* ---------- Sections ---------- */
+  section.block { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .block h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 2rem;
+  }
+
+  /* ---------- Work list ---------- */
+  .work-list { border-top: 2px solid var(--ink); }
+  .project { border-bottom: 1px solid var(--rule); }
+  .project summary {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .project summary::-webkit-details-marker { display: none; }
+  @media (min-width: 48rem) {
+    .project summary { grid-template-columns: 5rem 1fr 2rem; gap: 1.5rem; padding: 1.4rem 0; }
+  }
+  .thumb { width: 3.5rem; height: 3.5rem; border-radius: 0.4rem; overflow: hidden; display: block; }
+  @media (min-width: 48rem) { .thumb { width: 5rem; height: 5rem; } }
+  .thumb svg { display: block; width: 100%; height: 100%; }
+  .p-title { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 3vw, 1.9rem); letter-spacing: -0.015em; line-height: 1.15; display: block; }
+  .p-kind { color: var(--muted); font-size: 0.95rem; display: block; margin-top: 0.15rem; }
+  .p-year { display: none; color: var(--muted); font-variant-numeric: tabular-nums; }
+  @media (min-width: 48rem) { .p-year { display: block; } }
+  .chev { width: 1.4rem; height: 1.4rem; justify-self: end; transition: transform 0.25s ease; }
+  .project[open] .chev { transform: rotate(45deg); }
+  .project summary:hover .p-title { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--sun); text-underline-offset: 0.2em; }
+  .p-body { padding: 0 0 1.75rem; display: grid; gap: 1rem; }
+  @media (min-width: 48rem) { .p-body { padding-left: 6.5rem; max-width: 52rem; } }
+  .p-body p { margin: 0; max-width: 62ch; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .tags li { border: 1px solid var(--rule); border-radius: 999px; padding: 0.1rem 0.75rem; font-size: 0.9rem; color: var(--muted); }
+  .patent { margin: 0; padding-left: 1rem; border-left: 4px solid var(--sun); max-width: 62ch; }
+
+  /* ---------- About ---------- */
+  .about { display: grid; gap: 2.5rem; }
+  @media (min-width: 48rem) { .about { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
+  .about p { margin: 0 0 1.1rem; max-width: 62ch; }
+  .facts { margin: 0; display: grid; gap: 1.5rem; align-content: start; }
+  .facts dt { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin-bottom: 0.25rem; }
+  .facts dd { margin: 0; color: var(--muted); }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--ink); color: var(--page); }
+  .contact h2 { margin-bottom: 1.25rem; }
+  .contact p { max-width: 46ch; margin: 0 0 1.5rem; }
+  .mail {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.3rem, 5vw, 3.4rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-decoration-color: var(--sun);
+    text-underline-offset: 0.15em;
+  }
+  .elsewhere { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+  .elsewhere a { font-weight: 500; }
+  footer { padding-block: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-name .line span { animation: none; }
+    .sticker, .chev { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="wrap topbar">
+  <a class="mark" href="#top">Latha Rajendran</a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO: replace the name and the one-line description ============ -->
+  <section class="hero" aria-labelledby="name">
+    <div class="wrap">
+      <h1 class="hero-name" id="name">
+        <span class="line"><span>Latha</span></span>
+        <span class="line"><span>Rajendran</span></span>
+      </h1>
+      <p class="hero-title">Global Engineering Leader</p>
+      <p class="hero-role">I bring AI into enterprise applications to deliver business value.</p>
+      <a class="sticker" href="#contact">Open to leadership roles</a>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="block wrap" id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <div class="work-list">
+
+      <details class="project" open>
+        <summary>
+          <span class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><circle cx="40" cy="40" r="24" fill="#2d3af0"/></svg>
+          </span>
+          <span><span class="p-title">AI-Driven Product Intelligence &amp; Intelligent Configuration</span><span class="p-kind">Enterprise AI, Product Configurator</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body">
+          <p>I designed an AI-driven Product Intelligence framework inside the Product Configurator. It draws on historical sales data, geography, customer segments, pricing trends and product reviews to recommend configurations and help customers decide.</p>
+          <p>I also made the business case for it: I put a number on the value, won executive support and got it into the product roadmap.</p>
+          <p class="patent">I invented the approach and hold a U.S. patent for it: <strong>Product Configurator with AI-Based Knowledge Enrichment</strong>, Patent No. 12,596,696.</p>
+          <ul class="tags"><li>AI recommendations</li><li>Product configuration</li><li>Business case</li><li>U.S. patent</li></ul>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2d3af0"/><rect x="16" y="16" width="48" height="48" fill="#ffc233" transform="rotate(12 40 40)"/></svg>
+          </span>
+          <span><span class="p-title">AI-Powered Win Probability &amp; Deal Intelligence</span><span class="p-kind">Enterprise AI, Sales and pricing</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body">
+          <p>I conceived and architected a capability that uses historical deal, customer, product and pricing data to estimate the probability of winning a deal and to guide pricing during negotiations.</p>
+          <p>I designed the predictive analytics and the price-versus-outcome visualizations that show which pricing patterns go with successful deals. The aim: better pricing, more confidence in negotiations and more deals won.</p>
+          <ul class="tags"><li>Predictive analytics</li><li>Pricing intelligence</li><li>Data visualization</li></ul>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="block wrap" id="about" aria-labelledby="about-h" style="padding-top:0">
+    <h2 id="about-h">About</h2>
+    <div class="about">
+      <div>
+        <p>I'm a global engineering leader who enhances enterprise applications with AI solutions that raise business value. For each enterprise use case, I analyse the pros and cons of the different AI approaches and share what I find as research.</p>
+        <p>I'm seeking an engineering leadership role. I bring experience in enterprise SaaS platforms, AI-driven solutions and global engineering leadership, and I want to use it to drive technology strategy, speed up digital innovation, scale high-performing engineering organisations and deliver measurable business outcomes across international markets.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Focus</dt><dd>AI in enterprise software, from configuration to pricing and deal intelligence</dd></div>
+        <div><dt>Experience</dt><dd>Enterprise SaaS platforms, AI-driven solutions, global engineering leadership</dd></div>
+        <div><dt>Patent</dt><dd>U.S. Patent 12,596,696, Product Configurator with AI-Based Knowledge Enrichment</dd></div>
+        <div><dt>Looking for</dt><dd>An engineering leadership role</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="block contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Get in touch</h2>
+      <p>If you're hiring for engineering leadership, or working on AI for enterprise software, I'd like to hear from you.</p>
+      <a class="mail" href="mailto:lathaRajendran2601@gmail.com">lathaRajendran2601@gmail.com</a>
+      <ul class="elsewhere">
+        <li><a href="https://www.linkedin.com/in/latha-rajendran-0770556/" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 Latha Rajendran</footer>
+
+</body>
+</html>
