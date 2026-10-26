@@ -163,6 +163,22 @@
   .tags li { border: 1px solid var(--rule); border-radius: 999px; padding: 0.1rem 0.75rem; font-size: 0.9rem; color: var(--muted); }
   .patent { margin: 0; padding-left: 1rem; border-left: 4px solid var(--sun); max-width: 62ch; }
 
+  /* ---------- Research ---------- */
+  .lede { max-width: 62ch; margin: -0.75rem 0 2rem; color: var(--muted); }
+  .qa { margin: 0; display: grid; gap: 1.5rem; }
+  .qa dt { font-family: var(--display); font-weight: 700; font-size: 1.15rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .qa dd { margin: 0.35rem 0 0; max-width: 62ch; }
+  .qa a { text-decoration-color: var(--sun); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+
+  .sub { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 2.2rem); letter-spacing: -0.015em; line-height: 1.1; margin: 4rem 0 1rem; }
+  .qa ul { margin: 0.35rem 0 0; padding-left: 1.1rem; max-width: 62ch; }
+  .qa li { margin-bottom: 0.3rem; }
+  .tbl { overflow-x: auto; }
+  .cmp { border-collapse: collapse; width: 100%; min-width: 46rem; font-size: 0.95rem; }
+  .cmp th, .cmp td { text-align: left; vertical-align: top; padding: 0.7rem 0.9rem 0.7rem 0; border-bottom: 1px solid var(--rule); }
+  .cmp thead th { font-family: var(--display); font-size: 1.05rem; border-bottom: 2px solid var(--ink); }
+  .cmp tbody th { font-weight: 600; color: var(--muted); }
+
   /* ---------- About ---------- */
   .about { display: grid; gap: 2.5rem; }
   @media (min-width: 48rem) { .about { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
@@ -205,6 +221,7 @@
   <a class="mark" href="#top">Latha Rajendran</a>
   <nav aria-label="Main">
     <a href="#work">Work</a>
+    <a href="#research">Research</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -264,12 +281,168 @@
     </div>
   </section>
 
+  <!-- ============ RESEARCH ============ -->
+  <section class="block wrap" id="research" aria-labelledby="research-h" style="padding-top:0">
+    <h2 id="research-h">Research: challenges in adopting AI in enterprise applications</h2>
+    <p class="lede">Moving an AI prototype into a production enterprise system raises questions that demos never surface: how to secure tool access, keep context under control, choose between architectures, and prove the value. My study groups the most common challenges into five areas, with a short, answer-oriented overview of each. It is written for architects, engineering leads and product teams building or evaluating AI agents.</p>
+    <div class="work-list">
+
+      <details class="project" open>
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2d3af0"/><circle cx="28" cy="40" r="16" fill="#ffc233"/><circle cx="52" cy="40" r="16" fill="#ffc233" fill-opacity="0.7"/></svg></span>
+          <span><span class="p-title">1. Context and Knowledge</span><span class="p-kind">3 questions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa">
+          <div><dt>What is context engineering, and how is it different from prompt engineering?</dt><dd>Prompt engineering focuses on wording a single instruction well. Context engineering is the wider discipline of deciding everything a model sees at each step: instructions, retrieved knowledge, tool definitions, memory and conversation history. In agent systems, the quality of the context usually matters more than the cleverness of the prompt. <a href="https://www.philschmid.de/context-engineering" rel="noopener">5 min read</a></dd></div>
+          <div><dt>How do you avoid context bloat and context rot?</dt><dd>Stuffing the window with every tool, document and past message raises cost and latency, and it also degrades answer quality as relevant details get diluted. Keep context lean: load tools and skills only when needed, summarize or trim history, retrieve selectively, and offload large results to files or external stores.</dd></div>
+          <div><dt>When should you use RAG, Skills, MCP or memory?</dt><dd>Each solves a different problem. Use RAG (Retrieval-Augmented Generation) to ground answers in large or changing knowledge, Skills to package repeatable procedures and domain know-how, MCP (Model Context Protocol) to connect to live tools and systems, and memory to carry user or task state across sessions. Most enterprise solutions combine more than one. <a href="#deep-dive">Read the deep dive</a></dd></div>
+        </dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><rect x="14" y="14" width="22" height="22" fill="#2d3af0"/><rect x="44" y="14" width="22" height="22" fill="#2d3af0" fill-opacity="0.6"/><rect x="14" y="44" width="52" height="22" fill="#2d3af0" fill-opacity="0.85"/></svg></span>
+          <span><span class="p-title">2. Architecture and Frameworks</span><span class="p-kind">6 questions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa">
+          <div><dt>Should you use a single agent or multiple agents?</dt><dd>Start with a single agent and add more only when you have a clear reason, such as distinct tool sets, parallel work, separate permissions or context isolation. Multi-agent designs add coordination overhead, cost and new failure modes, so the benefit must outweigh them.</dd></div>
+          <div><dt>Skills or MCP: which should you choose?</dt><dd>MCP exposes external tools and data through a standard interface, which suits live integrations and shared services. Skills encode instructions and workflows the agent loads on demand, which suits procedures and conventions. The key factors are whether you need live system access, how reusable the capability must be, and how much context it consumes.</dd></div>
+          <div><dt>LangGraph or create_agent: when to use which?</dt><dd>A prebuilt agent helper such as create_agent is the fastest route for straightforward tool-calling loops. LangGraph gives explicit control over state, branching, retries, persistence and human checkpoints, which matters for complex or long-running workflows. Pick the simplest option that meets your control and reliability needs.</dd></div>
+          <div><dt>How do the major agent frameworks compare?</dt><dd>Frameworks differ in abstraction level, orchestration model, state handling, ecosystem and production maturity. Compare them against your actual requirements: language and platform fit, multi-agent support, observability hooks, community activity and the cost of switching later.</dd></div>
+          <div><dt>How do you balance enterprise performance between the model and the harness?</dt><dd>A stronger model is not the only lever. The harness, meaning the prompts, tools, context handling, retries and evaluation loop around the model, often determines real-world accuracy and cost. Measure both together on your own tasks before upgrading either.</dd></div>
+          <div><dt>How do you design for scalability and high throughput?</dt><dd>Treat agents like any distributed workload: make steps stateless where possible, queue and parallelize work, cache repeated calls, respect model rate limits and plan for graceful degradation. Track latency, token usage and error rates per step so bottlenecks are visible early.</dd></div>
+        </dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#151a66"/><path d="M40 12 66 22v18c0 14-10 24-26 30C24 64 14 54 14 40V22z" fill="#ffc233"/></svg></span>
+          <span><span class="p-title">3. Security and Trust</span><span class="p-kind">5 questions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa">
+          <div><dt>How do you secure MCP: credentials, authentication and error handling?</dt><dd>Give agents the least privilege they need, preferring scoped, short-lived credentials and delegated user identity over shared service keys. Keep secrets out of the model’s context and authenticate at the tool layer. Return structured errors so the model can tell an identity or permission problem apart from a genuine tool failure and respond appropriately instead of retrying blindly.</dd></div>
+          <div><dt>How do you protect agents from security threats?</dt><dd>Agents introduce new risks such as prompt injection, data exfiltration through tools, excessive permissions and untrusted tool or skill sources. Defend in depth: validate inputs and outputs, sandbox execution, restrict network and data access, vet third-party tools, and log every action for audit.</dd></div>
+          <div><dt>How do you add guardrails and evaluators, and measure agent quality?</dt><dd>Guardrails constrain behavior at runtime, for example by filtering unsafe content, enforcing policies and validating outputs. Evaluators measure quality over time using test sets, rubrics and LLM-based or human review. Define what “good” means for each use case first, then automate checks against it.</dd></div>
+          <div><dt>How do you handle data privacy, governance and compliance?</dt><dd>Enterprise data brings obligations around personal data, residency, retention and auditability. Classify what can reach a model, mask or redact sensitive fields, keep audit trails of prompts and tool calls, and confirm that vendors meet your regulatory requirements.</dd></div>
+          <div><dt>When should a human stay in the loop?</dt><dd>High-impact or irreversible actions, such as payments, deletions and external communications, should require approval. Decide which actions are autonomous, which need review and which are blocked, and design the approval step so it is fast enough that people do not bypass it.</dd></div>
+        </dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><path d="M10 56 28 38l12 10 16-24 14 16" fill="none" stroke="#151a66" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><span class="p-title">4. Reliability, Operations and Cost</span><span class="p-kind">5 questions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa">
+          <div><dt>How do you choose an observability framework for AI tools?</dt><dd>Look for end-to-end tracing of prompts, tool calls, token usage, latency and cost, plus support for open standards such as OpenTelemetry. Prefer tools that work across your frameworks and model providers, and that let you attach evaluation scores to traces.</dd></div>
+          <div><dt>How do you make agents reliable despite hallucinations and non-determinism?</dt><dd>Model output varies and sometimes errs, so reliability has to be designed in. Ground answers in retrieved sources, validate structured outputs, add retries and fallbacks, set step and time limits, and make failures visible rather than silent.</dd></div>
+          <div><dt>How do you test and evaluate agents in CI/CD?</dt><dd>Treat prompts, tools and skills like code: keep versioned regression test sets, run evaluations on every change and gate releases on quality thresholds. Compare model and prompt versions side by side to catch regressions before users do.</dd></div>
+          <div><dt>How do you control cost, latency and token usage?</dt><dd>Cost scales with context size, model choice and number of steps. Route simple tasks to smaller models, cache repeated work, trim context and set budgets, then review the trade-off between quality, speed and spend regularly.</dd></div>
+          <div><dt>How do you choose models and avoid vendor lock-in?</dt><dd>Models and prices change quickly. Keep a thin abstraction between your application and the provider, evaluate candidates on your own data, and design prompts, tools and evaluations so that switching models is a test run rather than a rewrite.</dd></div>
+        </dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2d3af0"/><path d="M16 60V40h14v20zm22 0V28h14v32zm22 0V16h4v44z" fill="#ffc233"/></svg></span>
+          <span><span class="p-title">5. Building and Adoption</span><span class="p-kind">3 questions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa">
+          <div><dt>How do you build skills, and what are the best practices?</dt><dd>A good skill is focused, clearly described so the agent knows when to use it, and written with concrete instructions, examples and any supporting scripts or references. Keep each skill small, test it against real tasks, and iterate from observed failures.</dd></div>
+          <div><dt>How do you prove ROI and manage organizational change?</dt><dd>Technology alone does not deliver value. Start with a well-scoped use case, define success metrics before launch, measure against a baseline, and invest in training, trust and workflow redesign so teams actually adopt the tool.</dd></div>
+          <div><dt>How can you use open-source projects to grow your AI skills?</dt><dd>Open-source agent frameworks, MCP servers and skill libraries are a practical way to learn current patterns. Read how mature projects handle tools, state and evaluation, run and modify examples, then contribute fixes, documentation or small features.</dd></div>
+        </dl></div>
+      </details>
+
+    </div>
+    <h3 class="sub" id="deep-dive">Deep dive: Skills, MCP, RAG and Memory</h3>
+    <p class="lede">With agentic AI, building software is easier and faster, but new problems appear. One of the biggest is how to extend a model with Skills, MCP, RAG and Memory. Their uses overlap, so the real question is how to choose, combine, govern and observe them to build reliable, secure and maintainable enterprise agents.</p>
+    <div class="work-list">
+
+      <details class="project" open>
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2d3af0"/><path d="M40 14v22M40 36 20 62M40 36l20 26" stroke="#ffc233" stroke-width="6" fill="none" stroke-linecap="round"/></svg></span>
+          <span><span class="p-title">Choosing the right approach</span><span class="p-kind">Four questions, one example</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><p>Skills provide reusable procedures. MCP provides standard access to external tools and data. RAG provides relevant knowledge at runtime. Memory keeps information and progress across interactions. Ask four questions:</p><div class="qa"><ul><li>Must the agent do something or reach a live system? Use <strong>MCP</strong>.</li><li>Does it need facts from a large or changing body of content? Use <strong>RAG</strong>.</li><li>Does it need a specific, repeatable way of working? Use a <strong>Skill</strong>.</li><li>Does it need to remember a user or earlier work? Use <strong>Memory</strong>.</li></ul></div><p>If the knowledge is small and stable, put it in a skill’s reference file or in the prompt instead of building RAG. If you need a different style or behavior rather than new knowledge, consider fine-tuning. Start with the simplest option, add one capability at a time, and measure what each addition changes in accuracy, cost and latency.</p><p><strong>Example: an expense assistant.</strong> A skill defines the review steps and policy checks. RAG looks up the travel policy documents. MCP connects to the finance system to submit the claim. Memory remembers the employee’s default cost center. Each answers a different question, and none replaces another.</p></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><rect x="18" y="14" width="44" height="52" rx="4" fill="#2d3af0"/><rect x="26" y="26" width="28" height="5" fill="#ffc233"/><rect x="26" y="38" width="20" height="5" fill="#ffc233"/></svg></span>
+          <span><span class="p-title">Agent Skills</span><span class="p-kind">Reusable procedures for repeatable tasks</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa"><div><dt>What they are, and the problem they solve</dt><dd>A skill is a folder with a SKILL.md file (a name, a description and instructions) plus optional scripts, templates and reference files. Before skills, a long system prompt carried every instruction on every request. Instructions piled up, competed with each other, and a change in one place could break another.</dd></div><div><dt>How they work</dt><dd>Skills use progressive disclosure. At startup the agent loads only each skill’s name and description. It loads the full instructions when a skill matches the task, and reads reference files or runs scripts only if needed. One agent can carry many skills without a giant prompt. Each skill has one job, so it can be versioned, tested and reused across agents. Rule of thumb: put who the agent is and what it must always do in the system prompt, and how to do a specific task in a skill. Skills and MCP work together: a skill says how to do the job and when to use which tool, and MCP supplies the tool. Reusable skills are published by <a href="https://github.com/anthropics/skills" rel="noopener">Anthropic</a>, <a href="https://awesome-copilot.github.com/skills/" rel="noopener">Copilot</a> and <a href="https://github.com/google/skills/tree/main" rel="noopener">Google</a>.</dd></div><div><dt>In the enterprise</dt><dd>Domain experts hold the detailed steps, guardrails and rules, so they should write the skills.<ul><li>Keep each skill small and focused on one job, and aim for reuse.</li><li>Write the description to say what the skill does and when to use it, because that is all the agent sees at startup.</li><li>Define clear stages and exit conditions.</li><li>Test against real tasks and revise from observed failures.</li></ul></dd></div><div><dt>Risks</dt><dd><ul><li>A third-party skill can include scripts. Treat it as code: review it and limit what it can access.</li><li>A vague description means the skill is never loaded, or is loaded for the wrong task.</li><li>Skills go stale when the process changes, so give each an owner and a review cycle.</li></ul></dd></div></dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#151a66"/><circle cx="22" cy="40" r="9" fill="#ffc233"/><circle cx="58" cy="22" r="9" fill="#ffc233"/><circle cx="58" cy="58" r="9" fill="#ffc233"/><path d="M22 40 58 22M22 40 58 58" stroke="#ffc233" stroke-width="3"/></svg></span>
+          <span><span class="p-title">Model Context Protocol (MCP)</span><span class="p-kind">A standard way to reach tools and live systems</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa"><div><dt>What it is, and the problem it solves</dt><dd>MCP is an open standard, introduced by Anthropic in November 2024, for connecting agents to tools, data sources and resources. Without it, every pairing of application and tool needed a custom connector (the “N × M” problem). A shared standard needs only N + M implementations.</dd></div><div><dt>How it works</dt><dd>An <strong>MCP host</strong> is the application that uses the tools. An <strong>MCP client</strong> inside the host keeps the connection to an <strong>MCP server</strong>, which discovers, executes and returns results for tools. Messages use JSON-RPC 2.0, over stdio for local servers and streamable HTTP for remote ones. Servers can also expose resources (data to read) and prompts (reusable templates). A registry acts as a service directory for public servers.</dd></div><div><dt>In the enterprise</dt><dd>Servers carry the responsibility for security, scalability and governance, and several features are still maturing.<ul><li><strong>Authentication and authorization:</strong> an OAuth-based approach for remote servers was added during 2025 and keeps being revised, so check the current specification.</li><li><strong>Identity:</strong> prefer delegated user identity and scoped, short-lived credentials over shared service keys.</li><li><strong>Observability:</strong> support is evolving, so add your own tracing of tool calls.</li></ul></dd></div><div><dt>Risks</dt><dd><ul><li>Prompt injection through tool descriptions or tool results.</li><li>Over-privileged tokens and tools that can do more than the task needs.</li><li>Unvetted third-party servers.</li><li>Tool sprawl: many tool definitions in context raise cost and lower accuracy.</li></ul></dd></div></dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><path d="M12 62V30l14-10 14 10v32z" fill="#2d3af0"/><circle cx="58" cy="30" r="12" fill="none" stroke="#151a66" stroke-width="5"/><path d="m67 39 8 8" stroke="#151a66" stroke-width="5" stroke-linecap="round"/></svg></span>
+          <span><span class="p-title">Retrieval-Augmented Generation (RAG)</span><span class="p-kind">Relevant knowledge at query time</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa"><div><dt>What it is, and the problem it solves</dt><dd>RAG connects an LLM to external data so it retrieves relevant information at query time. Models only know what they were trained on, and their context windows are limited. RAG lets them use current and private knowledge, and supplies only the relevant pieces.</dd></div><div><dt>How it works</dt><dd>Five stages: data collection, chunking and embedding, indexing, retrieval and generation. The first three happen ahead of time. Vector databases (Pinecone, ChromaDB, FAISS, Weaviate) run fast approximate nearest-neighbour search, and frameworks such as LangChain and <a href="https://github.com/run-llama/llama_index" rel="noopener">LlamaIndex</a> help embed the data. At query time the system retrieves chunks by semantic search, combines them with the instructions and question, and the LLM answers from them. Variants: <a href="https://www.datacamp.com/blog/agentic-rag" rel="noopener">agentic RAG</a> (the agent decides when and what to retrieve), <a href="https://www.datacamp.com/tutorial/graphrag" rel="noopener">GraphRAG</a> (knowledge graphs) and <a href="https://www.datacamp.com/tutorial/multimodal-rag" rel="noopener">multimodal RAG</a> (images, tables, diagrams).</dd></div><div><dt>In the enterprise</dt><dd>Most RAG quality comes from retrieval, not the model.<ul><li>Combine semantic and keyword search, then rerank to the best few chunks.</li><li>Keep source, date, owner and type with each chunk for filtering and citations.</li><li>Enforce permissions at retrieval time.</li><li>Re-index when documents change and remove outdated ones.</li><li>Test on real questions, measuring retrieval quality and answer faithfulness separately.</li><li>If the whole knowledge base fits in the context window, including it directly can be simpler.</li></ul></dd></div><div><dt>Risks</dt><dd><ul><li>Wrong chunks retrieved, or the right one buried among irrelevant ones.</li><li>Stale or conflicting documents produce confident wrong answers.</li><li>Unenforced permissions leak restricted content.</li><li>Retrieved text can carry hijacking instructions, so treat it as untrusted data.</li></ul></dd></div></dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#2d3af0"/><rect x="14" y="48" width="52" height="10" fill="#ffc233"/><rect x="14" y="32" width="52" height="10" fill="#ffc233" fill-opacity="0.75"/><rect x="14" y="16" width="52" height="10" fill="#ffc233" fill-opacity="0.5"/></svg></span>
+          <span><span class="p-title">Memory</span><span class="p-kind">Continuity across sessions</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><dl class="qa"><div><dt>What it is, and the problem it solves</dt><dd>Memory captures and consolidates key information across sessions. A session is the raw record of one conversation, and memory is the condensed, durable part worth keeping. RAG makes an agent knowledgeable about an organization’s content, while memory makes it familiar with the individual user and earlier work. Without it every conversation starts from zero and long ones outgrow the context window. Memory enables personalization, context window management, insight across many users (aggregated and privacy-preserving) and self-improvement from strategies that worked.</dd></div><div><dt>How it works</dt><dd>Common types are semantic (facts and preferences), episodic (past interactions) and procedural (learned ways of doing things). The pipeline: extract what is worth keeping, consolidate it (merge duplicates, resolve conflicts, drop outdated items), store it with metadata, retrieve what is relevant and inject it into the context. Frameworks such as ADK and LangGraph provide the plumbing, but long-term storage still needs developer logic.</dd></div><div><dt>In the enterprise</dt><dd><ul><li><strong>Scope:</strong> decide whether a memory belongs to a user, team, tenant or task, and keep them separate.</li><li><strong>User control:</strong> let users view, correct and delete memories, and set retention limits.</li><li><strong>Privacy:</strong> apply the same classification, access control and compliance rules as other enterprise data.</li></ul></dd></div><div><dt>Risks</dt><dd><ul><li>Wrong or outdated memories reused with confidence.</li><li>Poisoned memory: malicious or mistaken content saved and later acted on.</li><li>Over-personalization, or memory shown where it does not belong.</li></ul></dd></div></dl></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#ffc233"/><path d="M14 20h52M14 40h52M14 60h52M30 14v52M50 14v52" stroke="#151a66" stroke-width="4"/></svg></span>
+          <span><span class="p-title">Side-by-side comparison</span><span class="p-kind">Owner, scope, change triggers and risks</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><div class="tbl" role="region" aria-label="Comparison of Skills, MCP, RAG and Memory" tabindex="0"><table class="cmp">
+<thead><tr><th scope="col"></th><th scope="col">Skills</th><th scope="col">MCP</th><th scope="col">RAG</th><th scope="col">Memory</th></tr></thead>
+<tbody>
+<tr><th scope="row">Gives the agent</th><td>How to do a task</td><td>Ability to act and reach live systems</td><td>Facts from large or changing content</td><td>Knowledge about a user or past work</td></tr>
+<tr><th scope="row">Typical owner</th><td>Domain experts</td><td>Platform and integration team</td><td>Content and knowledge owners</td><td>Agent platform, per user</td></tr>
+<tr><th scope="row">Scope</th><td>Reusable across agents</td><td>Shared services</td><td>Organization-wide</td><td>Per user, tenant or task</td></tr>
+<tr><th scope="row">Changes when</th><td>The process changes</td><td>The system or API changes</td><td>Documents change</td><td>Users interact</td></tr>
+<tr><th scope="row">Main risk</th><td>Unvetted skills and scripts</td><td>Excess permissions, tool misuse</td><td>Wrong or stale retrieval, access leaks</td><td>Stale or wrong memories, privacy</td></tr>
+</tbody></table></div></div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <span class="thumb" aria-hidden="true"><svg viewBox="0 0 80 80"><rect width="80" height="80" fill="#151a66"/><path d="M40 12 66 22v18c0 14-10 24-26 30C24 64 14 54 14 40V22z" fill="#ffc233"/><path d="m28 40 9 9 16-18" stroke="#151a66" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><span class="p-title">Governance and observability</span><span class="p-kind">Questions to answer before enterprise rollout</span></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+        </summary>
+        <div class="p-body"><div class="qa"><ul><li><strong>Ownership and lifecycle:</strong> who creates, reviews, versions and retires each skill, MCP server, knowledge source and memory store.</li><li><strong>Access control:</strong> enforce per-user permissions at the retrieval and tool level, not only in the prompt.</li><li><strong>Traceability:</strong> for each answer, log which skill version loaded, which tools were called, which chunks were retrieved and which memories were injected. This is what lets you explain a decision.</li><li><strong>Evaluation:</strong> keep regression tests for skills, retrieval quality checks for RAG and accuracy reviews for memory, and run them on every change.</li><li><strong>Monitoring:</strong> track usage, latency, cost and error rates, and detect hallucinations and failed tool calls.</li><li><strong>Security and compliance:</strong> vet third-party skills and MCP servers, guard against prompt injection, apply least privilege, keep audit trails and retention rules. A registry or approval process helps.</li></ul></div><p>In short, Skills supply the procedure, MCP the tools, RAG the facts and Memory the continuity. Match each to the problem it solves, start simple, and know who owns each piece, who can access it and which pieces shaped each decision.</p></div>
+      </details>
+    </div>
+  </section>
+
   <!-- ============ ABOUT ============ -->
   <section class="block wrap" id="about" aria-labelledby="about-h" style="padding-top:0">
     <h2 id="about-h">About</h2>
     <div class="about">
       <div>
-        <p>I'm a global engineering leader who enhances enterprise applications with AI solutions that raise business value. For each enterprise use case, I analyse the pros and cons of the different AI approaches and share what I find as research.</p>
+        <p>I'm a global engineering leader who enhances enterprise applications with AI solutions that raise business value. For each enterprise use case, I analyse the pros and cons of the different AI approaches and share what I find as <a href="#research">research</a>.</p>
         <p>I'm seeking an engineering leadership role. I bring experience in enterprise SaaS platforms, AI-driven solutions and global engineering leadership, and I want to use it to drive technology strategy, speed up digital innovation, scale high-performing engineering organisations and deliver measurable business outcomes across international markets.</p>
       </div>
       <dl class="facts">
